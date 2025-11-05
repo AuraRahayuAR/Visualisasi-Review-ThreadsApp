@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Threads Reviews — Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+</head>
+<body>
+
+  <main class="container">
+    <aside class="sidebar card">
+      <div class="section">
+        <div class="section-title">Filters</div>
+        <div class="field grid-2">
+          <div>
+            <label for="dateStart">Start Date</label>
+            <input type="date" id="dateStart" />
+          </div>
+          <div>
+            <label for="dateEnd">End Date</label>
+            <input type="date" id="dateEnd" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="categorySelect">Category</label>
+          <select id="categorySelect" multiple size="5"></select>
+        </div>
+        <div class="field">
+          <button id="applyFilters" class="btn">Apply Filters</button>
+          <button id="resetFilters" class="btn btn-secondary">Reset</button>
+        </div>
+        <div class="field">
+          <label for="binCount">Histogram Bins</label>
+          <input type="range" id="binCount" min="5" max="60" step="1" value="20" />
+          <div class="hint"><span id="binCountVal">20</span> bins</div>
+        </div>
+        <div class="field">
+          <button id="clearDrill" class="btn btn-secondary">Clear Drill/Selection</button>
+        </div>
+      </div>
+    </aside>
+
+    <section class="content">
+      <div class="card">
+        <div class="card-head"><div><div class="card-title">Pie: Rating Category Share</div><div class="card-subtitle">Positive, Neutral, Negative</div></div><div id="pieLegend" class="legend"></div></div>
+        <div id="pie" class="viz"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><div><div class="card-title">Histogram: Review Rating</div><div class="card-subtitle">1 to 5</div></div></div>
+        <div id="hist" class="viz"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><div><div class="card-title">Scatter: Date vs Review Length</div><div class="card-subtitle">Brush to select</div></div></div>
+        <div class="viz scatter-wrap">
+          <div id="scatter" class="viz"></div>
+          <div id="brush" class="brush" hidden></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
